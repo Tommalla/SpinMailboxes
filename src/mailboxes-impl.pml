@@ -6,30 +6,31 @@
 #error This is not a test file to invoke spin on.
 #endif // TEST_FILE
 
+chan c[NUM_PROCESSES] = [10000] of {byte}
 
 inline mb_init_pre()
 {
   // FIXME: implement
-  skip
+  skip;
 }
 
 
 inline mb_init_post()
 {
   // FIXME: implement
-  skip
+  skip;
 }
 
 
 inline mb_send(rmbi, m)
 {
-  // FIXME: implement
-  skip
+  // FIXME: make this nonblocking
+  c[rmbi]!!m;
 }
 
 
 inline mb_recv(m)
 {
-  // FIXME: implement
-  skip
+  c[_pid - 1]?m;
 }
+

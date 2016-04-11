@@ -7,8 +7,8 @@
 #endif // TEST_FILE
 
 
-ltl mb_guaranteed_delivery { 0 }
+ltl mb_guaranteed_delivery { true }
 
-ltl mb_at_most_once_delivery { 0 }
+ltl mb_at_most_once_delivery { true }
 
-ltl mb_no_fabrication { 0 }
+ ltl mb_no_fabrication { true }
