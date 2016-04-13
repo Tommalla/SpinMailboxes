@@ -6,7 +6,7 @@
 #error This is not a test file to invoke spin on.
 #endif // TEST_FILE
 
-chan c[NUM_PROCESSES] = [10000] of {byte}
+chan c[NUM_PROCESSES] = [255] of {byte}
 
 inline mb_init_pre()
 {
