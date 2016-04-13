@@ -8,29 +8,29 @@
 
 chan c[NUM_PROCESSES] = [255] of {byte}
 
+
 inline mb_init_pre()
 {
-  // FIXME: implement
-  skip;
+    skip;
 }
 
 
 inline mb_init_post()
 {
-  // FIXME: implement
-  skip;
+    // FIXME: implement
+    skip;
 }
 
 
 inline mb_send(rmbi, m)
 {
-  // FIXME: make this nonblocking
-  c[rmbi]!!m;
+    // FIXME: make this nonblocking
+    c[rmbi]!!m;
 }
 
 
 inline mb_recv(m)
 {
-  c[_pid - 1]?m;
+    c[_pid - 1]?m;
 }
 
