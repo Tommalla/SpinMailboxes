@@ -14,9 +14,13 @@
 ([] (is_sending_to(a, b) -> <>(proc[b]@proc_receive)))
 #define guaranteed_delivery_sym(a, b) \
 (guaranteed_delivery(a, b) && guaranteed_delivery(b, a))
+#define received(id) \
+(proc[id]@proc_receive)
+#define no_fabrication(id) \
+([](<>(<>received(id) -> (is_sending(0) || is_sending(1) || is_sending(2)))))
 
-ltl mb_guaranteed_delivery { guaranteed_delivery_sym(0, 1) && guaranteed_delivery_sym(0, 2) && guaranteed_delivery_sym(1, 2) }
+//ltl mb_guaranteed_delivery { guearanteed_delivery_sym(0, 0) && guaranteed_delivery_sym(0, 1) && guaranteed_delivery_sym(0, 2) && guaranteed_delivery_sym(1, 2) }
 
 //ltl mb_at_most_once_delivery { true }
 
-//ltl mb_no_fabrication { true }
+ltl mb_no_fabrication { no_fabrication(0) && no_fabrication(1) && no_fabrication(2) }
