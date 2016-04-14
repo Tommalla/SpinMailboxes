@@ -29,13 +29,14 @@ inline bb_post_run_init()
 
 inline bb_broadcast(sm)
 {
-  // FIXME: implement
-  skip
+    int i;
+    for (i : 1 .. NUM_PROCESSES) {
+        mb_send(i - 1, sm);
+    }
 }
 
 
 inline bb_deliver(rm)
 {
-  // FIXME: implement
-  skip
+    mb_recv(rm);
 }
