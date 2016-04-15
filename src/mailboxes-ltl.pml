@@ -29,4 +29,4 @@
 
 //ltl mb_at_most_once_delivery { delivered_all_once(0) && delivered_all_once(1) && delivered_all_once(2) }
 
-//ltl mb_no_fabrication { no_fabrication(0) && no_fabrication(1) && no_fabrication(2) }
+ltl mb_no_fabrication { no_fabrication(0) && no_fabrication(1) && no_fabrication(2) }

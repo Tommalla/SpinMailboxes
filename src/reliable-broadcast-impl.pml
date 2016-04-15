@@ -14,34 +14,35 @@
 
 inline rb_pre_run_init()
 {
-  // FIXME: implement
-  skip
+    skip;
 }
 
 
 inline rb_post_run_init()
 {
-  // FIXME: implement
-  skip
+    skip;
 }
 
 
-inline rb_broadcast(sm)
+inline rb_broadcast(sendm)
 {
-  // FIXME: implement
-  skip
+    bb_broadcast(sendm);
 }
 
 
-inline rb_deliver(rm)
+inline rb_deliver(m)
 {
-  // FIXME: implement
-  skip
+    bb_deliver(m)
+    do
+    :: rb_dset[m-1] -> bb_deliver(m);
+    :: !rb_dset[m-1] -> break;
+    od;
+    rb_dset[m-1] = true;
+    //post rb_continuation(msg)
 }
 
 
-inline rb_continuation(rm)
+inline rb_continuation(m)
 {
-  // FIXME: implement
-  skip
+    bb_broadcast(m)
 }

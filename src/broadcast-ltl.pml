@@ -30,7 +30,13 @@
 #define strong_valid(id) \
 ([]<>((<>(correct(id) && message_broadcasted(id, id + 1))) -> (correct_received(0, id + 1) && correct_received(1, id + 1) && correct_received(2, id + 1))))
 
-ltl no_duplication { delivers_once(0) && delivers_once(1) && delivers_once(2) }
+#define single_weak_agreement(id) \
+([]((<>correct_received(id, id + 1)) -> (<>correct_received(0, id + 1)) && (<>correct_received(1, id + 1)) && (<>correct_received(2, id + 1))))
+
+#define single_strong_agreement(id) \
+([](<>message_delivered(id, id + 1) -> (<>correct_received(0, id + 1)) && (<>correct_received(1, id + 1)) && (<>correct_received(2, id + 1))))
+
+//ltl no_duplication { delivers_once(0) && delivers_once(1) && delivers_once(2) }
 
 /*ltl no_creation { delivered_to_self(0) && delivered_to_self(1) && delivered_to_self(2) &&
                   not_created_sym(0, 1, 1) && not_created_sym(0, 1, 2) && not_created_sym(0, 1, 3) /*&&
@@ -41,6 +47,6 @@ ltl no_duplication { delivers_once(0) && delivers_once(1) && delivers_once(2) }
 
 //ltl strong_validity { strong_valid(0) && strong_valid(1) && strong_valid(2) }
 
-// ltl weak_agreement { 0 }
+ltl weak_agreement { single_weak_agreement(0) && single_weak_agreement(1) && single_weak_agreement(2) }
 
-// ltl strong_agreement { 0 }
+//ltl strong_agreement { single_strong_agreement(0) && single_strong_agreement(1) && single_strong_agreement(2) }
