@@ -34,10 +34,10 @@ inline rb_deliver(m)
 {
     bb_deliver(m)
     do
-    :: rb_dset[m-1] -> bb_deliver(m);
-    :: !rb_dset[m-1] -> break;
+    :: rb_dset[m-1] == 1 -> bb_deliver(m);
+    :: rb_dset[m-1] == 0 -> break;
     od;
-    rb_dset[m-1] = true;
+    rb_dset[m-1] = 1;
     //post rb_continuation(msg)
 }
 
