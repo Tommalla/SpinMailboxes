@@ -15,15 +15,13 @@
 
 inline bb_pre_run_init()
 {
-  // FIXME: implement
-  skip
+  skip;
 }
 
 
 inline bb_post_run_init()
 {
-  // FIXME: implement
-  skip
+  skip;
 }
 
 
