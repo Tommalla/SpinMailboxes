@@ -19,14 +19,14 @@
 (not_created(a, b, msg) && not_created(b, a, msg))
 
 #define correct(id) \
-(!<>process[id]@end_proc_fail)
+(!(<>(process[id]@end_proc_fail)))
 #define delivered_to_self(id) \
 (not_created(id, id, id + 1))
 #define weak_valid(id) \
 ([](correct(id) -> delivered_to_self(id)))
 
 #define correct_received(id, msg) \
-(correct(id) -> <> process[id]@proc_deliver && process[id]:rm == msg)
+(correct(id) -> <>message_delivered(id, msg))
 #define strong_valid(id) \
 ([]<>((<>(correct(id) && message_broadcasted(id, id + 1))) -> (correct_received(0, id + 1) && correct_received(1, id + 1) && correct_received(2, id + 1))))
 
@@ -43,4 +43,4 @@
 
 ltl weak_agreement { (correct(2) && (<>message_delivered(2, 1))) -> (correct_received(1, 1) && correct_received(3, 1)) }
 
-//ltl strong_agreement { (<>message_delivered(2, 1)) -> correct_received(3, 1) }
+//ltl strong_agreement { ((<>message_delivered(2, 1)) -> ((correct_received(1, 1) && correct_received(3, 1)))) }

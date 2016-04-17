@@ -103,7 +103,7 @@ init
        run process(i);
        i++
     :: else ->
-       break    
+       break
     od;
     post_run_init();
     i = 0

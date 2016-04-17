@@ -25,7 +25,7 @@ inline mb_init_post()
 inline mb_send(rmbi, m)
 {
     // FIXME: make this nonblocking
-    c[rmbi]!!m;
+    c[rmbi]!m;
 }
 
 

@@ -32,6 +32,7 @@ inline bb_broadcast(sm)
     int i;
     for (i : 1 .. NUM_PROCESSES) {
         mb_send(i - 1, sm);
+        possibly_fail();
     }
 }
 
