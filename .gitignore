@@ -1,4 +1,5 @@
-bin/*
+bin/*.trail
+bin/pan*
 pan.*
 pan
 *.nvr
